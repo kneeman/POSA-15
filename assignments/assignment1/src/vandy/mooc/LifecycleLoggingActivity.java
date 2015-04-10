@@ -57,6 +57,7 @@ public abstract class LifecycleLoggingActivity extends Activity {
         // Always call super class for necessary
         // initialization/implementation.
         // TODO - you fill in here.
+    	super.onStart();
     }
 	
     /**
@@ -74,6 +75,8 @@ public abstract class LifecycleLoggingActivity extends Activity {
         // initialization/implementation and then log which lifecycle
         // hook method is being called.
         // TODO - you fill in here.
+    	super.onResume();
+    	Log.d(TAG, "onResume has been entered");   	
     }
 	
     /**
@@ -89,7 +92,9 @@ public abstract class LifecycleLoggingActivity extends Activity {
         // Always call super class for necessary
         // initialization/implementation and then log which lifecycle
         // hook method is being called.
-        // TODO - you fill in here.
+    	// TODO - you fill in here.
+    	super.onPause();
+    	Log.d(TAG, "onPause has been entered");  
     }
 	
     /**
@@ -102,7 +107,9 @@ public abstract class LifecycleLoggingActivity extends Activity {
         // Always call super class for necessary
         // initialization/implementation and then log which lifecycle
         // hook method is being called.
-        // TODO - you fill in here.
+    	// TODO - you fill in here.
+    	super.onStop();
+    	Log.d(TAG, "onStop has been entered");
     }
 	
     /**
@@ -114,7 +121,9 @@ public abstract class LifecycleLoggingActivity extends Activity {
         // Always call super class for necessary
         // initialization/implementation and then log which lifecycle
         // hook method is being called.
-        // TODO - you fill in here.
+    	// TODO - you fill in here.
+    	super.onRestart();
+    	Log.d(TAG, "onRestart has been entered");
     }
 	
     /**
@@ -127,6 +136,8 @@ public abstract class LifecycleLoggingActivity extends Activity {
         // Always call super class for necessary
         // initialization/implementation and then log which lifecycle
         // hook method is being called.
-        // TODO - you fill in here.
+    	// TODO - you fill in here.
+    	super.onDestroy();
+    	Log.d(TAG, "onDestroy has been entered");
     }
 }

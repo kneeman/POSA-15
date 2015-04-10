@@ -27,9 +27,11 @@ public class DownloadImageActivity extends Activity {
         // Always call super class for necessary
         // initialization/implementation.
         // @@ TODO -- you fill in here.
+    	super.onCreate(savedInstanceState);
 
         // Get the URL associated with the Intent data.
         // @@ TODO -- you fill in here.
+    	final String passedUrl = getIntent().getDataString();
 
         // Download the image in the background, create an Intent that
         // contains the path to the image file, and set this as the
@@ -41,5 +43,32 @@ public class DownloadImageActivity extends Activity {
         // methods should be called in the background thread.  See
         // http://stackoverflow.com/questions/20412871/is-it-safe-to-finish-an-android-activity-from-a-background-thread
         // for more discussion about this topic.
+    	
+    	Runnable downloadRunnable = new Runnable() {
+			
+			@Override
+			public void run() {
+				//Solution had DownloadImageActivity.this for context as opposed to getApplicationContext()
+				Uri finishedUri = DownloadUtils.downloadImage(getApplicationContext(), Uri.parse(passedUrl));
+				if(finishedUri != null){
+					Intent backIntent = new Intent(Intent.ACTION_VIEW);
+					backIntent.setData(finishedUri);
+					setResult(RESULT_OK, backIntent);
+				}else{
+					setResult(RESULT_CANCELED);
+				}
+				runOnUiThread(new Runnable() {
+					
+					@Override
+					public void run() {
+						finish();				
+					}
+				});
+				
+			}
+		};
+		
+		Thread mThread = new Thread(downloadRunnable);
+        mThread.start();
     }
 }
