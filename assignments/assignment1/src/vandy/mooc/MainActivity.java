@@ -150,8 +150,10 @@ public class MainActivity extends LifecycleLoggingActivity {
     	galleryIntent.setDataAndType(Uri.parse("file://" + pathToImageFile), "image/*");
     	
     	
-    	//Find out why this below does not work
-    	//Intent galleryIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(pathToImageFile));
+    	//Alternate way to do it per the walk through
+    	//galleryIntent.setDataAndType(Uri.fromFile(new File(pathToImageFile)), "image/jpeg");
+    	
+    	
         return galleryIntent;
     }
 
